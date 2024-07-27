@@ -39,11 +39,12 @@ class User(db.Model, SerializerMixin):
     def authenticate(self, password):
         return bcrypt.check_password_hash(self._password, password.encode('utf-8'))
     
-    serialize_rules = ['-_password']
+    serialize_rules = ['-_password', '-messages.author', '-conversations.user']
 
     # relationships
     conversations = db.relationship('UserConversation', back_populates='user')
     messages = db.relationship('Message', back_populates='author')
+
 
 
 class Conversation(db.Model, SerializerMixin):
@@ -54,6 +55,8 @@ class Conversation(db.Model, SerializerMixin):
     # relationships
     messages = db.relationship('Message', back_populates='conversation', cascade='all, delete-orphan')
     participants = db.relationship('UserConversation', back_populates='conversation')
+
+    serialize_rules = ['-participants.conversation', '-messages.conversation']
 
 
 class Message(db.Model, SerializerMixin):
@@ -69,6 +72,8 @@ class Message(db.Model, SerializerMixin):
     author = db.relationship('User', back_populates='messages')
     conversation = db.relationship('Conversation', back_populates='messages')
 
+    serialize_rules = ['-author.message', '-conversation.message']
+
 
 class UserConversation(db.Model, SerializerMixin):
     __tablename__ = 'user_conversations'
@@ -80,4 +85,6 @@ class UserConversation(db.Model, SerializerMixin):
     # Relationships
     user = db.relationship('User', back_populates='conversations')
     conversation = db.relationship('Conversation', back_populates='participants')
+
+    serialize_rules = ['-user.conversations', '-conversation.participants']
 

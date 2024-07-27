@@ -1,0 +1,15 @@
+.container {
+    text-align: center;
+    border: 2px solid;
+    background-color: #aeadfa;
+    border-radius: 20px;
+    padding: 40px;
+    padding-top: 15px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+};
+
+button {
+    background-color: lightgreen;
+};
