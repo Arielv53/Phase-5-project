@@ -37,12 +37,13 @@ def get_conversations():
     conversations = []
     for uc in user_conversations:
         conversation = Conversation.query.get(uc.conversation_id)
-        users = User.query.join(UserConversation).filter(UserConversation.conversation_id == conversation.id).all()
-        usernames = [user.username for user in users]
-        conversations.append({
-            'id': conversation.id,
-            'usernames': usernames
-        })
+        if conversation:
+            users = User.query.join(UserConversation).filter(UserConversation.conversation_id == conversation.id).all()
+            usernames = [user.username for user in users]
+            conversations.append({
+                'id': conversation.id,
+                'usernames': usernames
+            })
 
     return jsonify(conversations), 200
 
@@ -97,6 +98,9 @@ def send_message(conversation_id):
     content = data.get('content')
     user_id = session.get('user_id')
 
+    print(f"Received data: {data}")
+    print(f"User ID from session: {user_id}")
+
     if not content or not user_id:
         return jsonify({'message': 'Content and user ID required'}), 400
 
@@ -114,13 +118,13 @@ def send_message(conversation_id):
 def login():
     data = request.get_json()
 
-    user = User.query.filter(User.username == data['username']).first()
-    if not user:
-        return {'error': 'login failed'}, 401
-    
-    session['user_id'] = user.id
+    user = User.query.filter_by(username=data['username']).first()
+    if user and user.authenticate(data['password']):
+        session['user_id'] = user.id
+        print(f"User {user.username} logged in with session ID: {session['user_id']}")
+        return user.to_dict(), 200
 
-    return user.to_dict(), 200
+    return {'error': 'login failed'}, 401
 
 @app.route('/signup', methods=['POST'])
 def signup():

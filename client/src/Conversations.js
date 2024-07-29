@@ -3,12 +3,23 @@ import { Link } from 'react-router-dom';
 
 function Conversations() {
     const [conversations, setConversations] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchConversations = async () => {
-            const response = await fetch('http://localhost:5555/conversations');
-            const data = await response.json();
-            setConversations(data);
+            try {
+                const response = await fetch('http://localhost:5555/conversations', {
+                    credentials: 'include', // Include cookies in the request
+                });
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setConversations(data);
+            } catch (error) {
+                console.error("Error fetching conversations:", error);
+                setError(error);
+            }
         };
         fetchConversations();
     }, []);
@@ -16,6 +27,7 @@ function Conversations() {
     return (
         <div>
             <h1>Conversations</h1>
+            {error && <p>Error: {error.message}</p>}
             <ul>
                 {conversations.map((conversation) => (
                     <li key={conversation.id}>

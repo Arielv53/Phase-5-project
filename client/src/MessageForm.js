@@ -10,6 +10,7 @@ function MessageForm({ conversationId, setMessages }) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ content: message }),
+            credentials: 'include',  // Ensure cookies are sent with the request
         });
         const newMessage = await response.json();
         setMessages((prevMessages) => [...prevMessages, newMessage]);
