@@ -39,7 +39,7 @@ function App() {
 
   return (
     <Router>
-      {user && <NavBar setUser={setUser} />}
+      {user && <NavBar setUser={setUser} user={user} />}
       <Routes>
         <Route
           path="/login"
@@ -51,11 +51,11 @@ function App() {
         />
         <Route
           path="/conversations"
-          element={<ProtectedRoute user={user} element={<Conversations />} />}
+          element={<ProtectedRoute user={user} element={<Conversations currentUser={user.username}/>} />}
         />
         <Route
           path="/conversation/:id"
-          element={<ProtectedRoute user={user} element={<Conversation />} />}
+          element={<ProtectedRoute user={user} element={<Conversation currentUser={user.id}/>} />}
         />
         <Route
           path="/message-form"

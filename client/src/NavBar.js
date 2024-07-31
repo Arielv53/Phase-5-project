@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import "./NavBar.css";
 
-function NavBar({ setUser }) {
+function NavBar({ setUser, user }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -17,9 +17,10 @@ function NavBar({ setUser }) {
 
     return (
         <nav className="navbar">
+            <span className="nav-username">{user.username}</span>
             <button className="nav-button" onClick={() => navigate("/users")}>Users</button>
             <button className="nav-button" onClick={() => navigate("/conversations")}>Conversations</button>
-            <button className="nav-button" onClick={() => navigate("/message-form")}>Message</button>
+            <button className="nav-button" onClick={() => navigate("/message-form")}>New Conversation</button>
             <button className="nav-button" onClick={handleLogout}>Logout</button>
         </nav>
     );

@@ -1,0 +1,87 @@
+.conversation-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: rgb(212, 213, 204);
+}
+
+.conversation-box {
+    width: 100%;
+    background-color: #ecead8;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.conversation-header {
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 15px 15px 0 0;
+    background-color: #0000000f;
+    color: rgba(0, 0, 0, 0.646);
+}
+
+.message-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    max-height: 275px;
+    overflow-y: auto;
+}
+
+.message-item {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #e4ede3;
+    text-align: right;
+    margin-left: auto; /* Align to the right */
+}
+
+.other-message {
+    background-color: #a3d68f;
+    text-align: left;
+    margin-right: auto; /* Align to the left */
+}
+
+.message-form-container {
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 15px 15px;
+}
+
+.delete-button {
+    background-color: #ff4d4dc3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.85em;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}
+
+.message-timestamp {
+    display: block;
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+}

@@ -27,6 +27,11 @@ def users():
     users = User.query.filter(User.username.ilike(f'%{search_term}%')).all()
     return jsonify([user.to_dict() for user in users]), 200
 
+@app.route('/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = User.query.get_or_404(user_id)
+    return jsonify(user.to_dict()), 200
+
 @app.route('/conversations', methods=['GET'])
 def get_conversations():
     user_id = session.get('user_id')
@@ -91,6 +96,28 @@ def view_conversation(conversation_id):
 
     return jsonify(message_list), 200
 
+@app.route('/conversations/<int:conversation_id>', methods=['DELETE'])
+def delete_conversation(conversation_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'message': 'Not authorized'}), 401
+
+    conversation = Conversation.query.get_or_404(conversation_id)
+
+    # Check if the user is part of the conversation
+    user_conversation = UserConversation.query.filter_by(user_id=user_id, conversation_id=conversation_id).first()
+    if not user_conversation:
+        return jsonify({'message': 'Not authorized to delete this conversation'}), 403
+
+    Message.query.filter_by(conversation_id=conversation_id).delete()
+    UserConversation.query.filter_by(conversation_id=conversation_id).delete()
+    
+    db.session.delete(conversation)
+    db.session.commit()
+
+    return jsonify({'message': 'Conversation deleted successfully'}), 200
+
+
 @app.route('/conversations/<int:conversation_id>/messages', methods=['POST'])
 def send_message(conversation_id):
     conversation = Conversation.query.get_or_404(conversation_id)
@@ -113,6 +140,24 @@ def send_message(conversation_id):
     db.session.commit()
 
     return jsonify(new_message.to_dict()), 201
+
+@app.route('/messages/<int:message_id>', methods=['DELETE'])
+def delete_message(message_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'message': 'Not authorized'}), 401
+
+    message = Message.query.get_or_404(message_id)
+
+    # Check if the message was authored by the user
+    if message.user_id != user_id:
+        return jsonify({'message': 'Not authorized to delete this message'}), 403
+
+    db.session.delete(message)
+    db.session.commit()
+
+    return jsonify({'message': 'Message deleted successfully'}), 200
+
 
 @app.route('/login', methods=['POST'])
 def login():

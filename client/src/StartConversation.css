@@ -3,17 +3,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 400px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 50px auto;
     background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .start-conversation-container h1 {
+    color: rgba(0, 0, 0, 0.785);
     margin-bottom: 20px;
     text-align: center;
+    font-family: cursive;
 }
 
 .username-input {
@@ -25,9 +27,9 @@
 }
 
 .chat-button {
-    width: 100%;
+    width: 50%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #4caf4fc9;
     color: white;
     border: none;
     border-radius: 5px;

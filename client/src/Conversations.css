@@ -1,0 +1,89 @@
+/* Container styling */
+.conversations-container {
+    padding: 20px;
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #e8f3fea7;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+}
+
+/* Heading styling */
+.conversations-container h1 {
+    margin-bottom: 20px;
+    color: #13122d86;
+    font-size: 2rem;
+    font-family: cursive;
+}
+
+/* Conversations list styling */
+.conversations-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Individual conversation item styling */
+.conversation-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 15px;
+    display: flex; /* Add this line */
+    justify-content: space-between; /* Add this line */
+    align-items: center; /* Add this line */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Hover effect for conversation items */
+.conversation-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Conversation link styling */
+.conversation-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Update this line */
+    align-items: flex-start; /* Add this line */
+}
+
+/* Hover effect for conversation links */
+.conversation-link:hover {
+    text-decoration: underline;
+}
+
+/* Username styling */
+.conversation-username {
+    font-weight: bold;
+    font-size: larger;
+    color: #252346;
+}
+
+/* Last message styling */
+.conversation-last-message {
+    font-size: 0.85em;
+    color: #666;
+    margin-left: 10px;
+}

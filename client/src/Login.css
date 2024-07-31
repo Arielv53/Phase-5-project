@@ -1,15 +1,80 @@
+/* Center the container and give it rounded edges and a shadow */
 .container {
     text-align: center;
-    border: 2px solid;
-    background-color: #aeadfa;
+    border: 2px solid #ebeef1b7;
+    background-color: #ebeef1b7;
     border-radius: 20px;
     padding: 40px;
     padding-top: 15px;
-    margin-left: 100px;
-    margin-right: 100px;
-    margin-top: 50px;
-};
+    margin: 50px auto;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+/* Title styling */
+.title h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: #071513b7;
+}
+
+/* Subtitle styling */
+h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form field styling */
+form div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input field styling */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Button styling */
 button {
-    background-color: lightgreen;
-};
+    background-color: #6c63ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #554ad8;
+}
+
+/* Alternate button styling for signup/login switch */
+button[type="submit"] {
+    background-color: #5bb255;
+}
+
+button[type="submit"]:hover {
+    background-color: #285c36;
+}
+
+/* Paragraph styling for signup/login switch */
+p {
+    margin: 20px 0;
+    color: #555;
+}

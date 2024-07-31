@@ -98,7 +98,7 @@ function Login({ setUser }) {
         <>
         <div className="container">
             <div className="title">
-                <h1>ChitChat</h1>
+                <h1>Lez'Chat</h1>
             </div>
             <div>
                 <h3>Sign Up or Log In</h3>

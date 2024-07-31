@@ -45,7 +45,7 @@ function StartConversation() {
 
     return (
         <div className="start-conversation-container">
-            <h1>Start a Chat !</h1>
+            <h1>Find a User !</h1>
             <input
                 type="text"
                 value={username}
