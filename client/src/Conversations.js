@@ -48,9 +48,7 @@ function Conversations({ currentUser }) {
             <ul className="conversations-list">
                 {conversations.map((conversation) => {
                     const otherUser = conversation.usernames.find(username => username !== currentUser);
-                    const lastMessage = conversation.messages && conversation.messages.length > 0 
-                        ? conversation.messages[conversation.messages.length - 1].text 
-                        : "No messages yet";
+                    const lastMessage = conversation.last_message || "No messages yet";
 
                     return (
                         <li key={conversation.id} className="conversation-item">

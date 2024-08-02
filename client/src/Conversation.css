@@ -7,8 +7,9 @@
 }
 
 body {
-    background-color: rgb(212, 213, 204);
+    background: linear-gradient(135deg, #a7e8d5 0%, #ecead8 100%);
 }
+
 
 .conversation-box {
     width: 100%;
@@ -40,22 +41,22 @@ body {
 .message-item {
     margin: 10px 0;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 30px;
     display: block;
-    max-width: 80%;
+    max-width: 50%;
     word-wrap: break-word;
 }
 
 .user-message {
     background-color: #e4ede3;
     text-align: right;
-    margin-left: auto; /* Align to the right */
+    margin-left: auto; 
 }
 
 .other-message {
     background-color: #a3d68f;
     text-align: left;
-    margin-right: auto; /* Align to the left */
+    margin-right: auto; 
 }
 
 .message-form-container {

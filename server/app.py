@@ -6,13 +6,13 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']  # how to connect to the db
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']  
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # optional performance thing
 app.secret_key = os.environ['SECRET_KEY'] # grab the secret key from env variables
 
 
 db.init_app(app)  # link sqlalchemy with flask
-Migrate(app, db)  # set up db migration tool (alembic)
+Migrate(app, db)  
 CORS(app, supports_credentials=True)  # set up cors
 api = Api(app)
 
@@ -45,9 +45,11 @@ def get_conversations():
         if conversation:
             users = User.query.join(UserConversation).filter(UserConversation.conversation_id == conversation.id).all()
             usernames = [user.username for user in users]
+            last_message = Message.query.filter_by(conversation_id=conversation.id).order_by(Message.timestamp.desc()).first()
             conversations.append({
                 'id': conversation.id,
-                'usernames': usernames
+                'usernames': usernames,
+                'last_message': last_message.content if last_message else None
             })
 
     return jsonify(conversations), 200
@@ -104,7 +106,6 @@ def delete_conversation(conversation_id):
 
     conversation = Conversation.query.get_or_404(conversation_id)
 
-    # Check if the user is part of the conversation
     user_conversation = UserConversation.query.filter_by(user_id=user_id, conversation_id=conversation_id).first()
     if not user_conversation:
         return jsonify({'message': 'Not authorized to delete this conversation'}), 403
@@ -149,7 +150,6 @@ def delete_message(message_id):
 
     message = Message.query.get_or_404(message_id)
 
-    # Check if the message was authored by the user
     if message.user_id != user_id:
         return jsonify({'message': 'Not authorized to delete this message'}), 403
 

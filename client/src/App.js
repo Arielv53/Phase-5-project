@@ -10,7 +10,6 @@ import StartConversation from './StartConversation';
 
 function App() {
   const [user, setUser] = useState({});
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5555/check_session", {

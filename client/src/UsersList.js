@@ -14,15 +14,14 @@ function UsersList() {
     }, []);
 
     return (
-        <div>
+        <div className="container">
             <h1>Users</h1>
-            <div className="container">
+            <div className="users-grid"></div>
                 {users.map((user) => (
                     <div key={user.id} className="user-box">
                         <h2>{user.username}</h2>
                     </div>
                 ))}
-            </div>
         </div>
     );
 };

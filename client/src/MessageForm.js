@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './MessageForm.css';
 
 function MessageForm({ conversationId, setMessages }) {
     const [message, setMessage] = useState('');
@@ -10,7 +11,7 @@ function MessageForm({ conversationId, setMessages }) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ content: message }),
-            credentials: 'include',  // Ensure cookies are sent with the request
+            credentials: 'include',  
         });
         const newMessage = await response.json();
         setMessages((prevMessages) => [...prevMessages, newMessage]);
@@ -18,14 +19,15 @@ function MessageForm({ conversationId, setMessages }) {
     };
 
     return (
-        <div>
+        <div className="input-button-container">
             <input
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Type a message"
+                className="message-input"
             />
-            <button onClick={handleSendMessage}>Send</button>
+            <button onClick={handleSendMessage} className="send-button">Send</button>
         </div>
     );
 }

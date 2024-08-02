@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    justify-content: space-around; /* Distribute buttons evenly */
+    justify-content: space-around; 
     align-items: center;
     background-color: #3b434be7;
     padding: 10px;
