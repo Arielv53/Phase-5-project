@@ -4,6 +4,7 @@ from flask import Flask, request, make_response, jsonify, session
 from flask_restful import Api
 from flask_migrate import Migrate
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URI']  
@@ -15,6 +16,15 @@ db.init_app(app)  # link sqlalchemy with flask
 Migrate(app, db)  
 CORS(app, supports_credentials=True)  # set up cors
 api = Api(app)
+
+UPLOAD_FOLDER = 'static/uploads/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/')
 def home():
@@ -173,21 +183,42 @@ def login():
 
 @app.route('/signup', methods=['POST'])
 def signup():
-    data = request.get_json()
+    # Ensure the upload folder exists
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
 
-    user = User.query.filter(User.username == data['username']).first()
-    if user:
-        return {'error': 'username already exists'}, 400
+    if 'file' not in request.files:
+        return {'error': 'No file part'}, 400
     
-    new_user = User(
-        username=data['username'],
-        password=data['password']
-    )
+    file = request.files['file']
+    if file.filename == '':
+        return {'error': 'No selected file'}, 400
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        
+        # Save the file to the specified path
+        file.save(file_path)
 
-    db.session.add(new_user)
-    db.session.commit()
+        data = request.form
+        user = User.query.filter(User.username == data['username']).first()
+        if user:
+            return {'error': 'Username already exists'}, 400
+        
+        new_user = User(
+            username=data['username'],
+            password=data['password'],
+            profile_photo=f"uploads/{filename}"  # Save the file path
+        )
 
-    return new_user.to_dict(), 201
+        db.session.add(new_user)
+        db.session.commit()
+
+        return new_user.to_dict(), 201
+
+    return {'error': 'File type not allowed'}, 400
+
 
 @app.route('/logout', methods=['DELETE'])
 def logout():

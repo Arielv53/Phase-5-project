@@ -17,6 +17,13 @@ function NavBar({ setUser, user }) {
 
     return (
         <nav className="navbar">
+            {user.profile_photo && (
+                <img
+                    src={`http://localhost:5555/static/uploads/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA0L3Jhd3BpeGVsX29mZmljZV8zNF9jdXRlX2NodWJieV9jaGlodWFodWFfZHJlYW15X3dhbGxwYXBlcl9jYXJ0b19iYzA.jpg/${user.profile_photo}`}
+                    alt={`${user.username}'s profile`}
+                    className="nav-profile-photo"
+                />
+            )}
             <span className="nav-username">{user.username}</span>
             <button className="nav-button" onClick={() => navigate("/users")}>Users</button>
             <button className="nav-button" onClick={() => navigate("/conversations")}>Conversations</button>

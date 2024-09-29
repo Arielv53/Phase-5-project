@@ -26,6 +26,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True, nullable=False)
     _password = db.Column(db.String, nullable=False)
+    profile_photo = db.Column(db.String, nullable=True)
 
     @hybrid_property
     def password(self):

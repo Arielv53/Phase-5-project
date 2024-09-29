@@ -4,6 +4,7 @@ import './Login.css';
 function Login({ setUser }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [file, setFile] = useState(null);
     const [errors, setErrors] = useState({});
     const [signUp, setSignUp] = useState(false);
 
@@ -49,17 +50,17 @@ function Login({ setUser }) {
     }
 
     function signup() {
+        const formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+        if (file) {
+            formData.append("file", file);
+        }
+
         fetch("http://localhost:5555/signup", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
             credentials: "include",
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
+            body: formData,
         })
             .then((response) => response.json())
             .then((data) => {
@@ -130,6 +131,18 @@ function Login({ setUser }) {
                             type="password"
                         />
                     </div>
+                    {signUp && (
+                        <div>
+                            <label htmlFor="file">Profile Photo</label>
+                            <input
+                                id="file"
+                                name="file"
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => setFile(e.target.files[0])}
+                            />
+                        </div>
+                    )}
                     <div>
                         <button type="submit">
                             {!signUp ? "Login" : "Sign up"}

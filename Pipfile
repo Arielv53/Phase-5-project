@@ -12,6 +12,7 @@ python-dotenv = "*"
 flask-bcrypt = "*"
 flask-cors = "*"
 flask-restful = "*"
+awsebcli = "*"
 
 [dev-packages]
 

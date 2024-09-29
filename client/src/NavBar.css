@@ -2,8 +2,16 @@
     display: flex;
     justify-content: space-around; 
     align-items: center;
-    background-color: #3b434be7;
+    background-color: #020d27e7;
     padding: 10px;
+}
+
+.nav-profile-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
 }
 
 .nav-username {
@@ -14,7 +22,7 @@
 }
 
 .nav-button {
-    background-color: #60e18db3; 
+    background-color: #6071e1b3; 
     border: none;
     color: white;
     padding: 10px 20px;
@@ -29,5 +37,5 @@
 }
 
 .nav-button:hover {
-    background-color: #4565a0;
+    background-color: #729be8;
 }

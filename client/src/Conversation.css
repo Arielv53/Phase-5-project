@@ -7,15 +7,14 @@
 }
 
 body {
-    background: linear-gradient(135deg, #a7e8d5 0%, #ecead8 100%);
+    background: linear-gradient(135deg, #060075 0%, #5c0385 100%);
 }
-
 
 .conversation-box {
     width: 100%;
-    background-color: #ecead8;
+    background-color: #6e54f20c;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgb(66, 78, 244);
     padding: 20px;
 }
 
@@ -24,10 +23,10 @@ body {
     padding: 10px 0;
     text-align: center;
     font-size: 24px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ae67f4;
     border-radius: 15px 15px 0 0;
     background-color: #0000000f;
-    color: rgba(0, 0, 0, 0.646);
+    color: rgba(255, 255, 255, 0.646);
 }
 
 .message-list {
@@ -48,13 +47,16 @@ body {
 }
 
 .user-message {
-    background-color: #e4ede3;
+    background-color: #7cb0faa1;
+    font-size: large;
     text-align: right;
     margin-left: auto; 
+    margin-right: 15px;
 }
 
 .other-message {
-    background-color: #a3d68f;
+    background-color: #bca1e2a4;
+    font-size: large;
     text-align: left;
     margin-right: auto; 
 }
@@ -83,6 +85,6 @@ body {
 .message-timestamp {
     display: block;
     font-size: 0.8em;
-    color: #888;
+    color: #fffafa;
     margin-top: 5px;
 }

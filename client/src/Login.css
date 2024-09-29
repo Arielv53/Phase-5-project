@@ -1,26 +1,26 @@
 
 .container {
     text-align: center;
-    border: 2px solid #ebeef1b7;
-    background-color: #ebeef1b7;
+    border: 2px solid #8e93ec88;
+    background-color: #8e93ec88;
     border-radius: 20px;
     padding: 50px;
     padding-top: 1px;
     margin: 50px auto;
     max-width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgb(12, 24, 31);
 }
 
 .title h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     margin-right: 20px;
-    color: #071513b7;
+    color: #071513ef;
 }
 
 h3 {
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffffb0;
 }
 
 form div {
@@ -31,7 +31,7 @@ form div {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #d3d0d0;
 }
 
 input[type="text"],
@@ -68,5 +68,5 @@ button[type="submit"]:hover {
 
 p {
     margin: 20px 0;
-    color: #555;
+    color: #ffffff;
 }

@@ -6,9 +6,9 @@
     width: 400px;
     padding: 20px;
     margin: 50px auto;
-    background-color: #f0f0f0;
+    background-color: #938cf3;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 }
 
 .start-conversation-container h1 {

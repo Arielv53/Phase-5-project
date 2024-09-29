@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={!user ? <Login setUser={setUser} /> : <Navigate to="/users" />}
+          element={!user ? <Login setUser={setUser} /> : <Navigate to="/conversations" />}
         />
         <Route
           path="/users"
