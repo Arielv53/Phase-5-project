@@ -1,26 +1,29 @@
+body {
+    background: linear-gradient(135deg, #f6f6fb 0%, #b5aeb5 100%);
+}
 
 .container {
     text-align: center;
-    border: 2px solid #8e93ec88;
-    background-color: #8e93ec88;
+    border: 2px solid #e4e4edcb;
+    background-color: #e4e4eddf;
     border-radius: 20px;
     padding: 50px;
     padding-top: 1px;
     margin: 50px auto;
     max-width: 300px;
-    box-shadow: 0 0 30px rgb(12, 24, 31);
+    box-shadow: 0 0 30px rgba(12, 24, 31, 0.268);
 }
 
 .title h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
     margin-right: 20px;
-    color: #071513ef;
+    color: #071513b8;
 }
 
 h3 {
     margin-bottom: 20px;
-    color: #ffffffb0;
+    color: #0e0c0cb0;
 }
 
 form div {
@@ -68,5 +71,5 @@ button[type="submit"]:hover {
 
 p {
     margin: 20px 0;
-    color: #ffffff;
+    color: #545050;
 }

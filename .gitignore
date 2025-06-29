@@ -1,1 +1,12 @@
+# Ignore Python environment files
+__pycache__/
+.venv/
+Pipfile.lock
+
+# Ignore Node.js dependencies
+client/node_modules/
+
+# Ignore environment files
 .env
+
+server/instance/*.db

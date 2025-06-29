@@ -3,9 +3,9 @@
     padding: 20px;
     max-width: 500px;
     margin: 50px auto;
-    background-color: #e8f3fea7;
+    background-color: #e7ebeea7;
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.401);
     text-align: center;
 }
 

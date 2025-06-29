@@ -106,7 +106,7 @@ function Login({ setUser }) {
                 <form onSubmit={handleSubmit}>
                     <input defaultValue="true" name="remember" type="hidden" />
                     <div>
-                        <label htmlFor="username">Username</label>
+                        <label htmlFor="username"></label>
                         <input
                             autoComplete="username"
                             id="username"
@@ -119,7 +119,7 @@ function Login({ setUser }) {
                         />
                     </div>
                     <div>
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password"></label>
                         <input
                             autoComplete="current-password"
                             id="password"

@@ -6,15 +6,11 @@
     justify-content: center;
 }
 
-body {
-    background: linear-gradient(135deg, #060075 0%, #5c0385 100%);
-}
-
 .conversation-box {
     width: 100%;
     background-color: #6e54f20c;
     border-radius: 15px;
-    box-shadow: 0 0 20px rgb(66, 78, 244);
+    box-shadow: 0 0 20px rgba(96, 97, 110, 0.673);
     padding: 20px;
 }
 
@@ -23,10 +19,10 @@ body {
     padding: 10px 0;
     text-align: center;
     font-size: 24px;
-    border-bottom: 1px solid #ae67f4;
+    border-bottom: 1px solid #07030c7d;
     border-radius: 15px 15px 0 0;
-    background-color: #0000000f;
-    color: rgba(255, 255, 255, 0.646);
+    background-color: #4b4b4b0f;
+    color: rgba(11, 6, 6, 0.646);
 }
 
 .message-list {
@@ -47,7 +43,7 @@ body {
 }
 
 .user-message {
-    background-color: #7cb0faa1;
+    background-color: #94bdf8a1;
     font-size: large;
     text-align: right;
     margin-left: auto; 
@@ -55,7 +51,7 @@ body {
 }
 
 .other-message {
-    background-color: #bca1e2a4;
+    background-color: #69da6ba4;
     font-size: large;
     text-align: left;
     margin-right: auto; 

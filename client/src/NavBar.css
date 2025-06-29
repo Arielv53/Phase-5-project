@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-around; 
     align-items: center;
-    background-color: #020d27e7;
+    background-color: linear-gradient(180deg, #f6f6fb 0%, #3b3c41 100%);
     padding: 10px;
 }
 
@@ -15,14 +15,14 @@
 }
 
 .nav-username {
-    color: white;
+    color: rgba(64, 62, 71, 0.851);
     font-size: x-large;
     font-family: cursive;
     padding-right: 20px;
 }
 
 .nav-button {
-    background-color: #6071e1b3; 
+    background-color: #7a7fa2b3; 
     border: none;
     color: white;
     padding: 10px 20px;
